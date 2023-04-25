@@ -9,5 +9,5 @@ class User(db.Model, UserMixin):
     password = db.Column(db.Text)
     about = db.Column(db.Text)
     age = db.Column(db.Integer)
-    sex = db.Column(db.String(2))
-    availability = db.Column(db.String(9))
+    sex = db.Column(db.Text)
+    availability = db.Column(db.Text)
