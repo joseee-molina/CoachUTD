@@ -1,3 +1,4 @@
+from werkzeug.security import generate_password_hash
 from coachutd.models import User
 from .test import get_test_client
 from . import db
@@ -13,7 +14,7 @@ def test_login_correct():
 
     with client.application.app_context():
         # create a user
-        db.session.add(User(username="test", password="test"))
+        db.session.add(User(username="test", password=generate_password_hash("test")))
 
         response = client.post( '/login', data=dict(username="test",
                                                     password="test"))
@@ -24,7 +25,7 @@ def test_login_valid_valid():
 
     with client.application.app_context():
         # create a user
-        db.session.add(User(username="Jonathan", password="Hello123"))
+        db.session.add(User(username="Jonathan", password=generate_password_hash("Hello123")))
 
         response = client.post( '/login', data=dict(username="Jonathan",
                                                     password="Hello123"))
