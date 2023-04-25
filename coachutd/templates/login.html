@@ -1,5 +1,24 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<link href="{{ url_for("static", filename="style.css") }}" rel="stylesheet">
+<link href="{{ url_for("static", filename="auth.css") }}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
-<h1>CoachUTD</h1>
+<div class="title-bar">
+<h1>Coach UTD</h1>
+</div>
+
+<div class="login-form">
+  <form action="/login" method="post">
+    <input type="text" placeholder="Username" name="username">
+    <input type="password" placeholder="Password" name="password">
+
+    <a>Forgot your password?</a>
+
+    <button type="submit">Login</button>
+  </form>
+</div>
+
 {% endblock %}

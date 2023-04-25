@@ -1,0 +1,23 @@
+.title-bar {
+  width: 100%;
+}
+
+.title-bar > h1 {
+  width: max-content;
+  margin-left: auto;
+  text-transform: uppercase;
+}
+
+.login-form {
+  margin: auto;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+input,
+button {
+  display: block;
+}
