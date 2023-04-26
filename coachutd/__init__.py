@@ -14,7 +14,10 @@ def create_app():
 
     db.init_app(app)
 
+    # create tables
     with app.app_context():
+        from . import models
+
         db.create_all()
 
     # set up login with flask-login
