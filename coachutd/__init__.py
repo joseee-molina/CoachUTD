@@ -16,7 +16,7 @@ def create_app():
 
     # create tables
     with app.app_context():
-        from . import models
+        from . import models as _
 
         db.create_all()
 
