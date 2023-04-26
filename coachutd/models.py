@@ -17,6 +17,8 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     author = db.Column(db.ForeignKey("user.id"))
     body = db.Column(db.Text)
+    # comma separated list of days represented by first two letters of day (like "Mo,Th")
+    availability = db.Column(db.Text)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
 
