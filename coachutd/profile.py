@@ -1,17 +1,29 @@
-from flask import Blueprint, request
-from . import db
+from flask import Blueprint, render_template, request
+from flask_login import current_user, login_required
 from .models import User
+from . import db
 
 profile = Blueprint("profile", __name__)
 
 
-@profile.route("/about", methods=["POST"])
-def change_description():
-    # change about field of user
-    about = request.form.get("about")
-    username = request.form.get("username")
-    password = request.form.get("password")
+@profile.route("/profile", methods=["GET", "POST"])
+@login_required
+def update():
+    if request.method == "POST":
+        # change about field of user
+        about = request.values.get("about")
+        age = request.values.get("age")
+        sex = request.values.get("sex")
 
-    User.query.filter_by(username=username).first().about = about
+        user = User.query.get(current_user.id)
+        if about is not None:
+            user.about = about
+        if age is not None:
+            user.age = age
+        if sex is not None:
+            user.sex = sex
 
-    return "Success", 200
+        user.save()
+        db.session.commit()
+
+    return render_template("profile.html", user=current_user)
