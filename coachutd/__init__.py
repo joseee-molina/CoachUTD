@@ -42,4 +42,8 @@ def create_app():
 
     app.register_blueprint(onboarding_blueprint)
 
+    from .explore import explore as explore_blueprint
+
+    app.register_blueprint(explore_blueprint)
+
     return app

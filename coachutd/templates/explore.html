@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="{{ url_for('static', filename='style.css' ) }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div>
+  {% for post in posts %}
+  <div>
+    <p>
+      <span>{{ post.created_at }}</span>
+    </p>
+    <p>{{ post.body }}</p>
+    <p>{{ post.author }}</p>
+    <p>{{ post.likes }}</p>
+    <p>{{ post.liked }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

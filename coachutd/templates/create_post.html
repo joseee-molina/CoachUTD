@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="{{ url_for('static', filename='style.css' ) }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div>
+  <form action="{{ url_for('explore.create') }}" method="post">
+    <textarea name="body" placeholder="Add Text" required></textarea>
+
+    <label for="availability-input">Select Time</label>
+    <select name="availability" id="availability-input" multiple required>
+      {% for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] %}
+      <option type="checkbox" value="{{ day[:2] }}">{{ day }}</option>
+      {% endfor %}
+    </select>
+
+    <button type="submit">Create Post</button>
+  </form>
+</div>
+
+{% endblock %}
