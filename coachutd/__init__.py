@@ -10,7 +10,7 @@ def create_app():
     app = Flask(__name__)
 
     app.config["SECRET_KEY"] = "secret"
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///:memory:"
 
     db.init_app(app)
 
@@ -19,6 +19,13 @@ def create_app():
         from . import models as _
 
         db.create_all()
+
+    # if in development mode, seed the tables with sample data
+    if app.env == "development" or app.debug:
+        from .seed_sample import seed
+
+        with app.app_context():
+            seed(db.session)
 
     # set up login with flask-login
     login_manager = LoginManager()
