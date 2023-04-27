@@ -4,9 +4,10 @@ from . import db
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.Text, unique=True)
     username = db.Column(db.Text, unique=True)
     password = db.Column(db.Text)
+    coach = db.Column(db.Boolean, default=False)
+    trainee = db.Column(db.Boolean, default=False)
     about = db.Column(db.Text)
     age = db.Column(db.Integer)
     sex = db.Column(db.Text)

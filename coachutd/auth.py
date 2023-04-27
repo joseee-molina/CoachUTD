@@ -10,16 +10,23 @@ auth = Blueprint("auth", __name__)
 def login():
     if request.method == "POST":
         # login code goes here
-        email = request.form.get("email")
-        password = request.form.get("password", "")
-        remember = True if request.form.get("remember") else False
+        username = request.form.get("username")
+        password = request.form.get("password")
+        remember = request.form.get("remember", default=False, type=bool)
 
-        user = User.query.filter_by(email=email).first()
+        try:
+            user = User.query.filter(User.username == username).one()
+        except:
+            flash("User not found")
+            return (
+                render_template("login.html"),
+                403,
+            )
 
         # check if the user actually exists
         # take the user-supplied password, hash it, and compare it to the hashed password in the database
-        if not user or not check_password_hash(user.password, password):
-            flash("Please check your login details and try again.")
+        if password and not check_password_hash(user.password, password):
+            flash("Incorrect password")
             return (
                 render_template("login.html"),
                 403,
@@ -28,6 +35,9 @@ def login():
         # if the above check passes, then we know the user has the right credentials
         login_user(user, remember=remember)
         # redirect to explore page
-        return redirect(url_for("explore.feed"), code=200)
+        return redirect(url_for("explore.feed"))
 
-    return render_template("login.html", user=current_user)
+    if current_user.is_authenticated:
+        return redirect(url_for("explore.feed"))
+    else:
+        return render_template("login.html", user=current_user)
