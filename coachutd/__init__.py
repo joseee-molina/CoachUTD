@@ -21,7 +21,7 @@ def create_app():
         db.create_all()
 
     # if in development mode, seed the tables with sample data
-    if app.env == "development" or app.debug:
+    if app.debug:
         from .seed_sample import seed
 
         with app.app_context():
