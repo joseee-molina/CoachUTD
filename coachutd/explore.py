@@ -30,7 +30,7 @@ def feed():
 @login_required
 def create():
     if request.method == "POST":
-        body = request.values.getlist("body")
+        body = request.values.get("body")
         availability = request.values.getlist("availability")
         if not body:
             flash("Body is required!", "danger")
