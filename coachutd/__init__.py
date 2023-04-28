@@ -45,10 +45,6 @@ def create_app():
 
     app.register_blueprint(profile_blueprint)
 
-    from .onboarding import onboarding as onboarding_blueprint
-
-    app.register_blueprint(onboarding_blueprint)
-
     from .explore import explore as explore_blueprint
 
     app.register_blueprint(explore_blueprint)
