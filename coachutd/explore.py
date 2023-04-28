@@ -29,7 +29,7 @@ def feed():
     return render_template("explore.html", posts=posts)
 
 
-@explore.route("/create", methods=["GET", "POST"])
+@explore.route("/create/", methods=["GET", "POST"])
 @login_required
 def create():
     if request.method == "POST":

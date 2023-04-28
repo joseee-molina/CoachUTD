@@ -6,7 +6,7 @@ from .models import User
 auth = Blueprint("auth", __name__)
 
 
-@auth.route("/login", methods=["GET", "POST"])
+@auth.route("/login/", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         # login code goes here

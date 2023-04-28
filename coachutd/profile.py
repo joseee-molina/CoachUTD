@@ -7,7 +7,7 @@ from . import db
 profile = Blueprint("profile", __name__)
 
 
-@profile.route("/profile", methods=["GET", "POST"])
+@profile.route("/profile/", methods=["GET", "POST"])
 @login_required
 def update_profile():
     user = current_user
