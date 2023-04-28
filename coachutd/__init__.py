@@ -53,4 +53,8 @@ def create_app():
 
     app.register_blueprint(explore_blueprint)
 
+    from .index import index as index_blueprint
+
+    app.register_blueprint(index_blueprint)
+
     return app
