@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, url_for, redirect
 from flask_login import current_user, login_required
 from sqlalchemy import func
-from .models import Post, Like
+from .models import Post, Like, User
 from . import db
 
 explore = Blueprint("explore", __name__, url_prefix="/explore")
@@ -12,13 +12,16 @@ explore = Blueprint("explore", __name__, url_prefix="/explore")
 def feed():
     posts = (
         db.session.query(
-            Post,
+            Post.created_at,
+            Post.body,
+            User.username.label("author"),
             func.count(Like.user).label("likes"),
             (func.count(Like.user).filter(Like.user == current_user.id) > 0).label(
                 "liked"
             ),
         )
         .outerjoin(Like, Post.id == Like.post)
+        .join(User, Post.author == User.id)
         .group_by(Post.id)
         .order_by(Post.created_at.desc())
         .all()
