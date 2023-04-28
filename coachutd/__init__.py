@@ -34,7 +34,7 @@ def create_app():
 
     from .models import User
 
-    login_manager.user_loader(lambda user_id: User.query.get(int(user_id)))
+    login_manager.user_loader(lambda user_id: db.session.get(User, user_id))
 
     # register controllers
     from .auth import auth as auth_blueprint
