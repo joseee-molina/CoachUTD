@@ -1,4 +1,5 @@
 from collections import namedtuple
+from sqlalchemy import Integer, type_coerce
 from sqlalchemy.ext.hybrid import hybrid_property
 from flask_login import UserMixin
 from . import db
@@ -27,34 +28,29 @@ class User(db.Model, UserMixin):
     bio = db.Column(db.Text)
     age = db.Column(db.Integer)
     sex = db.Column(db.Text)
-    _availability = db.Column("availability", db.SmallInteger)
-    """Represented as bitfield of width 7, mapped to a named tuple"""
-
-    @hybrid_property
-    def availability(self):
-        return bits_to_availability(self._availability)
-
-    @availability.inplace.setter
-    def _availability_setter(self, availability):
-        self._availability = availability_to_bits(availability)
+    # availability
+    mon = db.Column(db.Boolean, default=False)
+    tue = db.Column(db.Boolean, default=False)
+    wed = db.Column(db.Boolean, default=False)
+    thu = db.Column(db.Boolean, default=False)
+    fri = db.Column(db.Boolean, default=False)
+    sat = db.Column(db.Boolean, default=False)
+    sun = db.Column(db.Boolean, default=False)
 
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     author = db.Column(db.ForeignKey("user.id"))
     body = db.Column(db.Text)
-    _availability = db.Column("availability", db.SmallInteger)
-    """Represented as bitfield of width 7, mapped to a named tuple"""
-
-    @hybrid_property
-    def availability(self):
-        return bits_to_availability(self._availability)
-
-    @availability.inplace.setter
-    def _availability_setter(self, availability):
-        self._availability = availability_to_bits(availability)
-
     created_at = db.Column(db.DateTime, server_default=db.func.now())
+    # availability
+    mon = db.Column(db.Boolean, default=False)
+    tue = db.Column(db.Boolean, default=False)
+    wed = db.Column(db.Boolean, default=False)
+    thu = db.Column(db.Boolean, default=False)
+    fri = db.Column(db.Boolean, default=False)
+    sat = db.Column(db.Boolean, default=False)
+    sun = db.Column(db.Boolean, default=False)
 
 
 class Like(db.Model):
