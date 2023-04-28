@@ -24,7 +24,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.Text)
     coach = db.Column(db.Boolean, default=False)
     trainee = db.Column(db.Boolean, default=False)
-    about = db.Column(db.Text)
+    bio = db.Column(db.Text)
     age = db.Column(db.Integer)
     sex = db.Column(db.Text)
     _availability = db.Column("availability", db.SmallInteger)

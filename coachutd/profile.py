@@ -9,21 +9,22 @@ profile = Blueprint("profile", __name__)
 @profile.route("/profile", methods=["GET", "POST"])
 @login_required
 def update():
+    user = current_user
     if request.method == "POST":
-        # change about field of user
-        about = request.values.get("about")
-        age = request.values.get("age")
-        sex = request.values.get("sex")
+        # TODO: availability
+        update = (
+            User.update()
+            .where(User.c.id == current_user.id)
+            .values(
+                {
+                    "bio": request.values.get("bio"),
+                    "age": request.values.get("age"),
+                    "sex": request.values.get("sex"),
+                    "coach": request.values.get("coach", type=bool),
+                    "trainee": request.values.get("trainee", type=bool),
+                }
+            )
+        )
+        user = db.session.execute(update)
 
-        user = User.query.get(current_user.id)
-        if about is not None:
-            user.about = about
-        if age is not None:
-            user.age = age
-        if sex is not None:
-            user.sex = sex
-
-        user.save()
-        db.session.commit()
-
-    return render_template("profile.html", user=current_user)
+    return render_template("profile.html", current_user=user)
