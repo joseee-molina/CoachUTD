@@ -7,16 +7,38 @@
 {% block content %}
 <div>
   <form action="{{ url_for('explore.create') }}" method="post">
-    <textarea name="body" placeholder="Add Text" required></textarea>
+    <textarea name="body" placeholder="Add Text" rows="10" cols="50" required></textarea>
+    <br><br>
+    
+    <fieldset required>
 
-    <label for="availability-input">Select Time</label>
-    <select name="availability" id="availability-input" multiple required>
-      {% for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] %}
-      <option type="checkbox" value="{{ day[:2] }}">{{ day }}</option>
-      {% endfor %}
-    </select>
+      <legend>Select Time</legend>
+    
+    <input type="checkbox" id="mon" name="availability" value="mon">
+    <label for="mon">M </label>
+    
+    <input type="checkbox" id="tues" name="availability" value="tues">
+    <label for="tues">T </label>
+    
+    <input type="checkbox" id="wed" name="availability" value="wed">
+    <label for="wed">W </label>
+    
+    <input type="checkbox" id="thurs" name="availability" value="thurs">
+    <label for="thurs">Th </label>
+    
+    <input type="checkbox" id="fri" name="availability" value="fri">
+    <label for="fri">F </label>
+    
+    <input type="checkbox" id="sat" name="availability" value="sat">
+    <label for="sat">S </label>
+    
+    <input type="checkbox" id="sun" name="availability" value="sun">
+    <label for="sun">S </label>
 
-    <button type="submit">Create Post</button>
+    </fieldset> 
+    <br><br>
+
+    <a href="/explore"><button type="submit">Create Post</button></a>
   </form>
 </div>
 
