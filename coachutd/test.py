@@ -1,12 +1,36 @@
-from . import create_app, db
+import pytest
 
-test_app = create_app()
-test_app.config.update(
+from . import create_app
+
+mock_app = create_app()
+mock_app.config.update(
     {
         "TESTING": True,
     }
 )
 
 
-def get_test_client():
-    return test_app.test_client()
+@pytest.fixture()
+def app():
+    app = create_app()
+    app.config.update(
+        {
+            "TESTING": True,
+        }
+    )
+
+    # other setup can go here
+
+    yield app
+
+    # clean up / reset resources here
+
+
+@pytest.fixture()
+def client(app):
+    return app.test_client()
+
+
+@pytest.fixture()
+def runner(app):
+    return app.test_cli_runner()
