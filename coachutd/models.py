@@ -26,8 +26,7 @@ class User(db.Model, UserMixin):
     coach = db.Column(db.Boolean, default=False)
     trainee = db.Column(db.Boolean, default=False)
     bio = db.Column(db.Text)
-    age = db.Column(db.Integer)
-    sex = db.Column(db.Text)
+    sports = db.Column(db.Text)
     # availability
     mon = db.Column(db.Boolean, default=False)
     tue = db.Column(db.Boolean, default=False)
