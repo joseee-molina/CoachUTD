@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 from sqlalchemy import update
 from .models import User
@@ -19,14 +19,19 @@ def update_profile():
             .values(
                 {
                     "bio": request.values.get("bio"),
-                    "age": request.values.get("age"),
-                    "sex": request.values.get("sex"),
                     "coach": request.values.get("coach", type=bool),
                     "trainee": request.values.get("trainee", type=bool),
+                    "mon": request.values.get("mon"),
+                    "tue": request.values.get("tues"),
+                    "wed": request.values.get("wed"),
+                    "thu": request.values.get("thurs"),
+                    "fri": request.values.get("fri"),
+                    "sat": request.values.get("sat"),
+                    "sun": request.values.get("sun"),
                 }
             )
-            .returning(User)
         )
-        user = db.session.execute(stmt).one()
+        db.session.execute(stmt)
+        return redirect(url_for("explore.feed"))
 
     return render_template("profile.html", current_user=user)
