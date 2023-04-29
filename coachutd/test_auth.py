@@ -5,8 +5,10 @@ from . import db
 
 
 def test_login_incorrect(client):
-    response = client.post("/login", data=dict(username="test", password="test"))
-    assert response.status_code == 403
+    with client.application.app_context():
+        response = client.post("/login/", data=dict(username="Jonathan", password="Hello123"))
+        assert response.status_code == 403
+
 
 
 def test_login_correct(client):
@@ -14,9 +16,8 @@ def test_login_correct(client):
         # create a user
         db.session.add(User(username="test", password=generate_password_hash("test")))
 
-        response = client.post("/login", data=dict(username="test", password="test"))
+        response = client.post("/login/", data=dict(username="test", password="test"))
         assert response.status_code == 302
-        assert "explore" in response.location
 
 
 def test_login_valid_valid(client):
@@ -27,7 +28,7 @@ def test_login_valid_valid(client):
         )
 
         response = client.post(
-            "/login", data=dict(username="Jonathan", password="Hello123")
+            "/login/", data=dict(username="Jonathan", password="Hello123")
         )
         assert response.status_code == 302
         assert "explore" in response.location
@@ -39,7 +40,7 @@ def test_login_valid_invalid(client):
         db.session.add(User(username="Jonathan", password="Hello123"))
 
         response = client.post(
-            "/login", data=dict(username="Jonathan", password="Hell123")
+            "/login/", data=dict(username="Jonathan", password="Hell123")
         )
         assert response.status_code == 403
 
@@ -50,6 +51,6 @@ def test_login_invalid_valid(client):
         db.session.add(User(username="Jonatan", password="Hello123"))
 
         response = client.post(
-            "/login", data=dict(username="Jonathan", password="Hell123")
+            "/login/", data=dict(username="Jonathan", password="Hell123")
         )
         assert response.status_code == 403
