@@ -7,74 +7,71 @@ from .test import *
 from . import db
 
 
-def test_update_bio(client):
+def test_create_post_valid(client):
     with client.application.app_context(), client.application.test_request_context():
         # add the user
         db.session.add(
             User(
-                username="test",
-                password=generate_password_hash("test"),
-                bio="old value",
+                username="test2",
+                password=generate_password_hash("Hello123"),
+                
             )
         )
-        # fetch the user
         user = db.session.get(User, 1)
         assert user is not None
-        assert user.bio == "old value"
-        # log the user in
         assert login_user(user)
-
-        # try to update the user profile
-        response = client.post("/profile/", data={"bio": "new value"})
-
+        
+        # try to create post
+        response = client.post("/explore/create/", data={"body": "hello this is a new post", "mon" : True ,"tue" : True ,"wed": True})
         print(response.data)
-        # expect updated user
-        assert response.request.path == "/profile/"
-        assert response.status_code == 302
+        # creeated post asserts
+        assert response.request.path == "/explore/create/"
+        assert response.status_code == 303
         # assert "new value" in response.data 
         # # FIXME: uncomment when profile data is loaded into page
 
-def test_change_sports_preferences_changed(client):
+def test_create_post_invalid_1(client):
     with client.application.app_context(), client.application.test_request_context():
         # add the user
         db.session.add(
             User(
-                username="Jonathan",
+                username="test3",
                 password=generate_password_hash("Hello123"),
+                bio="old value",
             )
         )
         user = db.session.get(User, 1)
         assert user is not None
-        assert user.tennis == False
         assert login_user(user)
-        response = client.post("/profile/", data=dict(tennis=True))
-
-        assert user.tennis == True
-        print(response.data)
-        assert response.request.path == "/profile/"
-        assert response.status_code == 302
         
+        # try to create post
+        response = client.post("/explore/create/", data={"body": "", "availability": ["mon","tue","wed"]})
+        print(response.data)
+        # creeated post asserts
+        assert response.request.path == "/explore/create/"
+        assert response.status_code == 400
+        # assert "new value" in response.data 
         # # FIXME: uncomment when profile data is loaded into page
 
-def test_change_sports_preferences_unchanged(client):
+def test_create_post_invalid_2(client):
     with client.application.app_context(), client.application.test_request_context():
         # add the user
         db.session.add(
             User(
-                username="Jonathan",
+                username="test4",
                 password=generate_password_hash("Hello123"),
+                bio="old value",
             )
         )
         user = db.session.get(User, 1)
         assert user is not None
-        assert user.tennis == False
         assert login_user(user)
-        response = client.post("/profile/", data=dict(tennis=False))
-
-        assert user.tennis == True
-        print(response.data)
-        assert response.request.path == "/profile/"
-        assert response.status_code == 302
         
+        # try to create post
+        response = client.post("/explore/create/", data={"body": "   ", "availability": ["mon","tue","wed"]})
+        print(response.data)
+        # creeated post asserts
+        assert response.request.path == "/explore/create/"
+        assert response.status_code == 400
+        # assert "new value" in response.data 
         # # FIXME: uncomment when profile data is loaded into page
-

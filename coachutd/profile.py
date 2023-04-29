@@ -28,6 +28,11 @@ def update_profile():
                     "fri": request.values.get("fri"),
                     "sat": request.values.get("sat"),
                     "sun": request.values.get("sun"),
+                    "tennis": request.values.get("tennis", type=bool),
+                    "soccer": request.values.get("soccer", type=bool),
+                    "basketball": request.values.get("basketball", type=bool),
+                    "baseball": request.values.get("baseball", type=bool),
+                    "other_sport": request.values.get("other_sport", type=bool),
                 }
             )
         )

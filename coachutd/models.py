@@ -26,7 +26,7 @@ class User(db.Model, UserMixin):
     coach = db.Column(db.Boolean, default=False)
     trainee = db.Column(db.Boolean, default=False)
     bio = db.Column(db.Text)
-    sports = db.Column(db.Text)
+    #sports = db.Column(db.Text)
     # availability
     mon = db.Column(db.Boolean, default=False)
     tue = db.Column(db.Boolean, default=False)
@@ -35,6 +35,12 @@ class User(db.Model, UserMixin):
     fri = db.Column(db.Boolean, default=False)
     sat = db.Column(db.Boolean, default=False)
     sun = db.Column(db.Boolean, default=False)
+
+    tennis = db.Column(db.Boolean, default=False)
+    soccer = db.Column(db.Boolean, default=False)
+    basketball = db.Column(db.Boolean, default=False)
+    baseball = db.Column(db.Boolean, default=False)
+    other_sport = db.Column(db.Text)
 
 
 class Post(db.Model):
@@ -43,6 +49,7 @@ class Post(db.Model):
     body = db.Column(db.Text)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     # availability
+    availability = db.Column(db.Text)
     mon = db.Column(db.Boolean, default=False)
     tue = db.Column(db.Boolean, default=False)
     wed = db.Column(db.Boolean, default=False)
@@ -51,6 +58,16 @@ class Post(db.Model):
     sat = db.Column(db.Boolean, default=False)
     sun = db.Column(db.Boolean, default=False)
 
+class Sport(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    player = db.Column(db.ForeignKey("user.id"))
+    tennis = db.Column(db.Boolean, default=False)
+    soccer = db.Column(db.Boolean, default=False)
+    basketball = db.Column(db.Boolean, default=False)
+    baseball = db.Column(db.Boolean, default=False)
+    other_sport = db.Column(db.Text)
+
+    
 
 class Like(db.Model):
     user = db.Column(db.ForeignKey("user.id"), primary_key=True)

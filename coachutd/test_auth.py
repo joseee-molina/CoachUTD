@@ -44,7 +44,6 @@ def test_login_valid_invalid(client):
         )
         assert response.status_code == 403
 
-
 def test_login_invalid_valid(client):
     with client.application.app_context():
         # create a user
