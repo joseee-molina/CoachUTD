@@ -25,9 +25,10 @@ def test_update_bio(client):
         assert login_user(user)
 
         # try to update the user profile
-        response = client.post("/profile", data={"bio": "new value"})
+        response = client.post("/profile/", data={"bio": "new value"})
 
+        print(response.request.path)
         # expect updated user
         assert response.status_code == 200
-        assert response.request.path == "/profile"
+        assert response.request.path == "/profile/"
         # assert b"new value" in response.data # FIXME: uncomment when profile data is loaded into page
