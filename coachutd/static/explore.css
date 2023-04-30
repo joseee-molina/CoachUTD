@@ -89,3 +89,8 @@ button:active {
     display: inline-block;
     text-align: center;
 }
+#search{
+  color:#b3b3b3 ;
+  border: 0px;
+  margin-top: 2rem;
+}
