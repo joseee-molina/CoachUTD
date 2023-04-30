@@ -25,11 +25,17 @@
       <span >{{ post.created_at.strftime('%B %d, %Y %I:%M %p') }}</span>
     </p>
     <p class="body">{{ post.body }}</p>
-    {% if post.liked %}
-    <p><span class="liked">△</span>   {{ post.likes }}</p>
-    {% else %}
-    <p><span class="notLiked">△</span>   {{ post.likes }}</p>
-    {% endif %}
+    <p>
+      <svg class="like-button" fill="none" width="1em" height="1em" preserveAspectRatio="xMidYMax slice"
+        viewBox="0 0 100 100">
+        <path d="M 50,10 90,90 10,90 z" fill="{{ 'green' if post.liked else 'black' }}"
+          stroke="{{ 'green' if post.liked else 'black' }}" stroke-width="20" stroke-linejoin="round"
+          stroke-linecap="round" />
+        Like
+      </svg>
+
+      {{ post.likes }}
+    </p>
   </div>
   {% endfor %}
 </div>
