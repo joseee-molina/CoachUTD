@@ -1,7 +1,7 @@
 .title-bar {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .title-bar > h1 {
@@ -28,6 +28,10 @@ input,button {
 }
 html{
   background-color: #ffac3c;
+  position: relative;
+  display: flex;
+  align-items: center;
+
 }
 a{
   color: #ffffff;
@@ -82,4 +86,15 @@ ul.flashes{
   justify-content: center;
   color: red;
   list-style-type: none;
+}
+
+body{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+.background{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
