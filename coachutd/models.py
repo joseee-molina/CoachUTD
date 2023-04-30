@@ -31,7 +31,6 @@ class Post(db.Model):
     body = db.Column(db.Text)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     # availability
-    availability = db.Column(db.Text)
     mon = db.Column(db.Boolean, default=False)
     tue = db.Column(db.Boolean, default=False)
     wed = db.Column(db.Boolean, default=False)
