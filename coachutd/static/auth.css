@@ -1,11 +1,14 @@
 .title-bar {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .title-bar > h1 {
   width: max-content;
-  margin-left: auto;
+  text-align: center;
   text-transform: uppercase;
+  color: white;
 }
 
 .login-form {
@@ -17,7 +20,66 @@
   align-items: center;
 }
 
-input,
-button {
+input,button {
   display: block;
+  margin: 1rem;
+  justify-content: center;
+  border-radius: 1px;
+}
+html{
+  background-color: #ffac3c;
+}
+a{
+  color: #ffffff;
+  text-decoration: underline;
+  display: flex;
+  justify-content: center;
+}
+/* CSS */
+button {
+  margin: 1rem auto;
+  background-clip: padding-box;
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #ffac3c;
+  cursor: pointer;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  min-height: 3rem;
+  padding: 1rem;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: max-content;
+}
+
+button:hover,
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  background-color: #c85000;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+}
+ul.flashes{
+  padding-left: 0;
+}
+.message{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: red;
+  list-style-type: none;
 }

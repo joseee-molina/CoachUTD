@@ -2,38 +2,54 @@
 
 {% block head %}
 <link href="{{ url_for('static', filename='style.css' ) }}" rel="stylesheet">
+<link href="{{ url_for("static", filename="create.css") }}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-<div>
+<div class="background">
   <form action="{{ url_for('explore.create') }}" method="post">
-    <textarea name="body" placeholder="Add Text" rows="10" cols="50" required></textarea>
+    <textarea name="body" placeholder="Add Text" rows="10" cols="40" required></textarea>
     <br><br>
     
     <fieldset required>
 
       <legend>Select Time</legend>
     
-    <input type="checkbox" id="mon" name="availability" value="mon">
-    <label for="mon">M </label>
-    
-    <input type="checkbox" id="tues" name="availability" value="tues">
-    <label for="tues">T </label>
-    
-    <input type="checkbox" id="wed" name="availability" value="wed">
-    <label for="wed">W </label>
-    
-    <input type="checkbox" id="thurs" name="availability" value="thurs">
-    <label for="thurs">Th </label>
-    
-    <input type="checkbox" id="fri" name="availability" value="fri">
-    <label for="fri">F </label>
-    
-    <input type="checkbox" id="sat" name="availability" value="sat">
-    <label for="sat">S </label>
-    
-    <input type="checkbox" id="sun" name="availability" value="sun">
-    <label for="sun">S </label>
+    <div class="selection">
+      <input type="checkbox" id="mon" name="availability" value="mon">
+      <label for="mon">Monday</label>
+    </div>
+    <div class="break"></div>
+    <div class="selection">
+      <input type="checkbox" id="tues" name="availability" value="tues">
+      <label for="tues">Tuesday</label>
+    </div>
+    <div class="break"></div>
+    <div class="selection">
+      <input type="checkbox" id="wed" name="availability" value="wed">
+      <label for="wed">Wednesday </label>
+    </div>
+    <div class="break"></div>
+    <div class="selection">
+      <input type="checkbox" id="thurs" name="availability" value="thurs">
+      <label for="thurs">Thursday </label>
+    </div>
+    <div class="break"></div>
+    <div class="selection">
+      <input type="checkbox" id="fri" name="availability" value="fri">
+      <label for="fri">Friday </label>
+    </div>
+    <div class="break"></div>
+    <div class="selection">
+      <input type="checkbox" id="sat" name="availability" value="sat">
+      <label for="sat">Saturday </label>
+    </div>
+    <div class="break"></div>
+    <div class="selection">
+      <input type="checkbox" id="sun" name="availability" value="sun">
+      <label for="sun">Sunday </label>
+    </div>
+    <div class="break"></div>
 
     </fieldset> 
     <br><br>

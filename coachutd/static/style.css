@@ -3,3 +3,6 @@ main {
   max-width: 360px;
   margin: 0 auto;
 } 
+html{
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
