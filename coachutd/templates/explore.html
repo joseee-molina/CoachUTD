@@ -25,10 +25,13 @@
       <span >{{ post.created_at.strftime('%B %d, %Y %I:%M %p') }}</span>
     </p>
     <p class="body">{{ post.body }}</p>
-    <p>{{ post.likes }}</p>
-    <p>{{ post.liked }}</p>
+    {% if post.liked %}
+    <p><span class="liked">△</span>   {{ post.likes }}</p>
+    {% else %}
+    <p><span class="notLiked">△</span>   {{ post.likes }}</p>
+    {% endif %}
   </div>
   {% endfor %}
-  <a href="/explore/create"><button>+</button></a>
 </div>
+<a href="/explore/create"><button>+</button></a>
 {% endblock %}

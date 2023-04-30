@@ -6,13 +6,61 @@
     margin-top: 0.5rem;
     font-size: .70rem;
 }
+p{
+    font-size: 1.1rem;
+}
 .body{
     width: 100%;
     border: 1px solid black;
     padding: 0.5rem;
     padding-right: 0;
     margin-right: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ffac3c;
 }
 html{
     margin: 0.2rem;
+}
+.liked{
+    color: #ffac3c;
+}
+a{
+    position: absolute;
+    right: 10%;
+    bottom: 5%;
+}
+button {
+  margin: 1rem auto;
+  background-clip: padding-box;
+  background-color: #ffac3c;
+  border: 1px solid transparent;
+  border-radius: 50% ;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  justify-content: center;
+  padding: 1rem;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  line-height: 0.5;
+}
+
+button:hover,
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  background-color: #c85000;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
 }
