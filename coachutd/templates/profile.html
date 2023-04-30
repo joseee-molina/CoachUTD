@@ -25,9 +25,10 @@
     <input type="checkbox" id="coach" name="coach" value="coach">
     {% endif %}
     <label for="coach">I'm a coach! </label>
-  
+    <div class="break"></div>
     {% if current_user.trainee %}
     <input type="checkbox" id="trainee" name="trainee" value="trainee" checked>
+    
     {% else %}
     <input type="checkbox" id="trainee" name="trainee" value="trainee">
     {% endif %}
@@ -45,49 +46,50 @@
   {% else %}
   <input type="checkbox" id="mon" name="mon" value="mon">
   {% endif %}
-  <label for="mon">M </label>
-
+  <label for="mon">Monday</label>
+    <div class="break"></div>
   {% if current_user.tue %}
   <input type="checkbox" id="tues" name="tues" value="tues" checked>
   {% else %}
   <input type="checkbox" id="tues" name="tues" value="tues">
   {% endif %}
-  <label for="tues">T </label>
-
+  <label for="tues">Tuesday </label>
+    <div class="break"></div>
   {% if current_user.wed %}
   <input type="checkbox" id="wed" name="wed" value="wed" checked>
   {% else %}
   <input type="checkbox" id="wed" name="wed" value="wed">
   {% endif %}
-  <label for="wed">W </label>
-
+  <label for="wed">Wednesday </label>
+  <div class="break"></div>
+  <div class="break"></div>
   {% if current_user.thu %}
   <input type="checkbox" id="thurs" name="thurs" value="thurs" checked>
   {% else %}
   <input type="checkbox" id="thurs" name="thurs" value="thurs">
   {% endif %}
-  <label for="thurs">Th </label>
-
+  <label for="thurs">Thursday </label>
+    <div class="break"></div>
   {% if current_user.fri %}
   <input type="checkbox" id="fri" name="fri" value="fri" checked>
   {% else %}
   <input type="checkbox" id="fri" name="fri" value="fri">
   {% endif %}
-  <label for="fri">F </label>
-
+  <label for="fri">Friday</label>
+    <div class="break"></div>
   {% if current_user.sat %}
   <input type="checkbox" id="sat" name="sat" value="sat" checked>
   {% else %}
   <input type="checkbox" id="sat" name="sat" value="sat">
   {% endif %}
-  <label for="sat">S </label>
-
+  <label for="sat">Saturday </label>
+  <div class="break"></div>
   {% if current_user.sun %}
   <input type="checkbox" id="sun" name="sun" value="sun" checked>
   {% else %}
   <input type="checkbox" id="sun" name="sun" value="sun">
   {% endif %}
-  <label for="sun">S </label>
+  <label for="sun">Sunday </label>
   
   </fieldset>
   <button type="submit">Update</button>
