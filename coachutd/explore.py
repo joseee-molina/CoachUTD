@@ -42,13 +42,13 @@ def create():
 
         post = Post(
             body=body,
-            mon=request.values.has_key("mon"),
-            tue=request.values.has_key("tues"),
-            wed=request.values.has_key("wed"),
-            thu=request.values.has_key("thurs"),
-            fri=request.values.has_key("fri"),
-            sat=request.values.has_key("sat"),
-            sun=request.values.has_key("sun"),
+            mon="mon" in request.values,
+            tue="tues" in request.values,
+            wed="wed" in request.values,
+            thu="thurs" in request.values,
+            fri="fri" in request.values,
+            sat="sat" in request.values,
+            sun="sun" in request.values,
             author=current_user.id,
         )
         db.session.add(post)
