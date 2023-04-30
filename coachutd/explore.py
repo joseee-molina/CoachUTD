@@ -35,14 +35,21 @@ def feed():
 @login_required
 def create():
     if request.method == "POST":
-        body = request.values.get("body")
-        availability = request.values.getlist("availability")
-        if not body:
+        body = request.values.get("body", "")
+        if len(body.strip()) == 0:
             flash("Body is required!", "danger")
             return render_template("create_post.html"), 400
 
         post = Post(
-            body=body, availability=",".join(availability), author=current_user.id
+            body=body,
+            mon=request.values.has_key("mon"),
+            tue=request.values.has_key("tues"),
+            wed=request.values.has_key("wed"),
+            thu=request.values.has_key("thurs"),
+            fri=request.values.has_key("fri"),
+            sat=request.values.has_key("sat"),
+            sun=request.values.has_key("sun"),
+            author=current_user.id,
         )
         db.session.add(post)
         db.session.commit()

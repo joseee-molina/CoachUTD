@@ -31,8 +31,9 @@ def test_update_bio(client):
         # expect updated user
         assert response.request.path == "/profile/"
         assert response.status_code == 302
-        # assert "new value" in response.data 
+        # assert "new value" in response.data
         # # FIXME: uncomment when profile data is loaded into page
+
 
 def test_change_sports_preferences_changed(client):
     with client.application.app_context(), client.application.test_request_context():
@@ -53,8 +54,9 @@ def test_change_sports_preferences_changed(client):
         print(response.data)
         assert response.request.path == "/profile/"
         assert response.status_code == 302
-        
+
         # # FIXME: uncomment when profile data is loaded into page
+
 
 def test_change_sports_preferences_unchanged(client):
     with client.application.app_context(), client.application.test_request_context():
@@ -75,6 +77,5 @@ def test_change_sports_preferences_unchanged(client):
         print(response.data)
         assert response.request.path == "/profile/"
         assert response.status_code == 302
-        
-        # # FIXME: uncomment when profile data is loaded into page
 
+        # # FIXME: uncomment when profile data is loaded into page

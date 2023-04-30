@@ -6,9 +6,10 @@ from . import db
 
 def test_login_incorrect(client):
     with client.application.app_context():
-        response = client.post("/login/", data=dict(username="Jonathan", password="Hello123"))
+        response = client.post(
+            "/login/", data=dict(username="Jonathan", password="Hello123")
+        )
         assert response.status_code == 403
-
 
 
 def test_login_correct(client):
@@ -43,6 +44,7 @@ def test_login_valid_invalid(client):
             "/login/", data=dict(username="Jonathan", password="Hell123")
         )
         assert response.status_code == 403
+
 
 def test_login_invalid_valid(client):
     with client.application.app_context():
