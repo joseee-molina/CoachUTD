@@ -21,17 +21,17 @@
 
   <fieldset required>
     {% if current_user.coach %}
-    <input type="checkbox" id="coach" name="coach" value="coach" checked>
+    <input type="checkbox" id="coach" name="coach" checked>
     {% else %}
-    <input type="checkbox" id="coach" name="coach" value="coach">
+    <input type="checkbox" id="coach" name="coach">
     {% endif %}
     <label for="coach">I'm a coach! </label>
     <div class="break"></div>
     {% if current_user.trainee %}
-    <input type="checkbox" id="trainee" name="trainee" value="trainee" checked>
+    <input type="checkbox" id="trainee" name="trainee" checked>
     
     {% else %}
-    <input type="checkbox" id="trainee" name="trainee" value="trainee">
+    <input type="checkbox" id="trainee" name="trainee">
     {% endif %}
     <label for="trainee">I'm a trainee! </label>
   </fieldset>

@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, render_template, request, url_for
-from flask_login import current_user, login_required
+from flask_login import current_user, login_required, login_user
 from sqlalchemy import update
 from .models import User
 from . import db
@@ -19,8 +19,8 @@ def update_profile():
             .values(
                 {
                     "bio": request.values.get("bio"),
-                    "coach": request.values.get("coach", type=bool),
-                    "trainee": request.values.get("trainee", type=bool),
+                    "coach": "coach" in request.values,
+                    "trainee": "trainee" in request.values,
                     "mon": "mon" in request.values,
                     "tue": "tues" in request.values,
                     "wed": "wed" in request.values,
@@ -28,15 +28,17 @@ def update_profile():
                     "fri": "fri" in request.values,
                     "sat": "sat" in request.values,
                     "sun": "sun" in request.values,
-                    "tennis": request.values.get("tennis", type=bool),
-                    "soccer": request.values.get("soccer", type=bool),
-                    "basketball": request.values.get("basketball", type=bool),
-                    "baseball": request.values.get("baseball", type=bool),
-                    "other_sport": request.values.get("other_sport", type=bool),
+                    "tennis": "tennis" in request.values,
+                    "soccer": "soccer" in request.values,
+                    "basketball": "basketball" in request.values,
+                    "baseball": "baseball" in request.values,
+                    "other_sport": "other_sport" in request.values,
                 }
             )
         )
         db.session.execute(stmt)
+        db.session.commit()
+
         return redirect(url_for("explore.feed"))
 
     return render_template("profile.html", current_user=user)
