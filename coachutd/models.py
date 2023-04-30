@@ -1,22 +1,5 @@
-from collections import namedtuple
-from sqlalchemy import Integer, type_coerce
-from sqlalchemy.ext.hybrid import hybrid_property
 from flask_login import UserMixin
 from . import db
-
-Availability = namedtuple(
-    "Availability", ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
-)
-
-
-def bits_to_availability(bits):
-    availability = [bool((bits >> i) & 1) for i in range(0, 7)]
-    return Availability(*availability)
-
-
-def availability_to_bits(availability):
-    bits = [int(availability[i]) << i for i in range(0, 7)]
-    return sum(bits)
 
 
 class User(db.Model, UserMixin):
