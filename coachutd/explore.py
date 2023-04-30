@@ -15,6 +15,8 @@ def feed():
             Post.created_at,
             Post.body,
             User.username.label("author"),
+            User.coach.label("coach"),
+            User.trainee.label("trainee"),
             func.count(Like.user).label("likes"),
             (func.count(Like.user).filter(Like.user == current_user.id) > 0).label(
                 "liked"
