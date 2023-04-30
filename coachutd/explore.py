@@ -42,13 +42,13 @@ def create():
 
         post = Post(
             body=body,
-            mon=request.values.get("mon") == "on",
-            tue=request.values.get("tues") == "on",
-            wed=request.values.get("wed") == "on",
-            thu=request.values.get("thurs") == "on",
-            fri=request.values.get("fri") == "on",
-            sat=request.values.get("sat") == "on",
-            sun=request.values.get("sun") == "on",
+            mon=request.values.has_key("mon"),
+            tue=request.values.has_key("tues"),
+            wed=request.values.has_key("wed"),
+            thu=request.values.has_key("thurs"),
+            fri=request.values.has_key("fri"),
+            sat=request.values.has_key("sat"),
+            sun=request.values.has_key("sun"),
             author=current_user.id,
         )
         db.session.add(post)
