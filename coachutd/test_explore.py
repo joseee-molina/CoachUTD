@@ -25,9 +25,9 @@ def test_create_post_valid(client):
             "/explore/create/",
             data={
                 "body": "hello this is a new post",
-                "mon": True,
-                "tue": True,
-                "wed": True,
+                "mon": "on",
+                "tue": "on",
+                "wed": "on",
             },
         )
         print(response.data)
@@ -54,7 +54,8 @@ def test_create_post_invalid_1(client):
 
         # try to create post
         response = client.post(
-            "/explore/create/", data={"body": "", "availability": ["mon", "tue", "wed"]}
+            "/explore/create/",
+            data={"body": "", "mon": "on", "tues": "on", "wed": "on"},
         )
         print(response.data)
         # creeated post asserts
@@ -81,7 +82,7 @@ def test_create_post_invalid_2(client):
         # try to create post
         response = client.post(
             "/explore/create/",
-            data={"body": "   ", "availability": ["mon", "tue", "wed"]},
+            data={"body": "   ", "mon": "on", "tues": "on", "wed": "on"},
         )
         print(response.data)
         # creeated post asserts
