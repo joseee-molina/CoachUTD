@@ -37,8 +37,41 @@
   </fieldset>
 
   <br>
-
-  <textarea id="sportslist" name="sports_list" rows="10" cols="50" placeholder="Your sports">{{current_user.sports}}</textarea><br><br>
+  {% if current_user.tennis %}
+  <input type="checkbox" id="tennis" name="tennis" checked>
+  {% else %}
+  <input type="checkbox" id="tennis" name="tennis">
+  {% endif %}
+  <label for="tennis">Tennis</label>
+    <div class="break"></div>
+  {% if current_user.soccer %}
+  <input type="checkbox" id="soccer" name="soccer" checked>
+  {% else %}
+  <input type="checkbox" id="soccer" name="soccer">
+  {% endif %}
+  <label for="soccer">Soccer </label>
+    <div class="break"></div>
+  {% if current_user.basketball %}
+  <input type="checkbox" id="basketball" name="basketball" checked>
+  {% else %}
+  <input type="checkbox" id="basketball" name="basketball">
+  {% endif %}
+  <label for="wed">Basketball </label>
+  <div class="break"></div>
+  <div class="break"></div>
+  {% if current_user.baseball %}
+  <input type="checkbox" id="baseball" name="baseball" checked>
+  {% else %}
+  <input type="checkbox" id="baseball" name="baseball">
+  {% endif %}
+  <label for="baseball">Baseball </label>
+    <div class="break"></div>
+  {% if current_user.other_sport %}
+  <input type="checkbox" id="other_sport" name="other_sport" checked>
+  {% else %}
+  <input type="checkbox" id="other_sport" name="other_sport">
+  {% endif %}
+  <label for="other_sport">Other </label>
   
   <fieldset required>
 
