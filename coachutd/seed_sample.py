@@ -13,7 +13,7 @@ def seed(session):
             trainee=True,
             mon=True,
             tue=True,
-            sat=True, 
+            sat=True,
         ),
         User(
             id=2,
