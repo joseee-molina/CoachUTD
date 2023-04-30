@@ -11,6 +11,9 @@ def seed(session):
             bio="test user",
             coach=True,
             trainee=True,
+            mon=True,
+            tue=True,
+            sat=True, 
         ),
         User(
             id=2,

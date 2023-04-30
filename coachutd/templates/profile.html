@@ -7,45 +7,87 @@
 {% block content %}
 <div>
   <form action="{{ url_for('profile.update_profile') }}" method="post">
+
+    <h1>{{ current_user.username }}</h1>
     <button type="submit">Update</button>
 
     <br><br>
-
-  <input type="text" id="dispname" name="dispname" placeholder="Your name"></input>
   
   <br><br>
 
-  <textarea id="bio" name="bio" rows="5" cols="50" placeholder="Bio"></textarea><br><br>
+  <textarea id="bio" name="bio" rows="5" cols="50" placeholder="Bio">{{ current_user.bio }}</textarea><br><br>
 
-  <input type="radio" id="coach" name="usertype" value="coach">
-  <label for="coach">I'm a coach!</label>
+  <fieldset required>
+    {% if current_user.coach %}
+    <input type="checkbox" id="coach" name="coach" value="coach" checked>
+    {% else %}
+    <input type="checkbox" id="coach" name="coach" value="coach">
+    {% endif %}
+    <label for="coach">I'm a coach! </label>
+  
+    {% if current_user.trainee %}
+    <input type="checkbox" id="trainee" name="trainee" value="trainee" checked>
+    {% else %}
+    <input type="checkbox" id="trainee" name="trainee" value="trainee">
+    {% endif %}
+    <label for="trainee">I'm a trainee! </label>
+  </fieldset>
 
-  <input type="radio" id="trainee" name="usertype" value="trainee">
-  <label for="trainee">I'm a trainee!</label><br><br>
+  <br>
 
-  <textarea id="sportslist" name="sports_list" rows="10" cols="50" placeholder="Your sports"></textarea><br><br>
+  <textarea id="sportslist" name="sports_list" rows="10" cols="50" placeholder="Your sports">{{current_user.sports}}</textarea><br><br>
   
   <fieldset required>
+
+  {% if current_user.mon %}
+  <input type="checkbox" id="mon" name="mon" value="mon" checked>
+  {% else %}
   <input type="checkbox" id="mon" name="mon" value="mon">
+  {% endif %}
   <label for="mon">M </label>
 
+  {% if current_user.tue %}
+  <input type="checkbox" id="tues" name="tues" value="tues" checked>
+  {% else %}
   <input type="checkbox" id="tues" name="tues" value="tues">
+  {% endif %}
   <label for="tues">T </label>
 
+  {% if current_user.wed %}
+  <input type="checkbox" id="wed" name="wed" value="wed" checked>
+  {% else %}
   <input type="checkbox" id="wed" name="wed" value="wed">
+  {% endif %}
   <label for="wed">W </label>
 
+  {% if current_user.thu %}
+  <input type="checkbox" id="thurs" name="thurs" value="thurs" checked>
+  {% else %}
   <input type="checkbox" id="thurs" name="thurs" value="thurs">
+  {% endif %}
   <label for="thurs">Th </label>
 
+  {% if current_user.fri %}
+  <input type="checkbox" id="fri" name="fri" value="fri" checked>
+  {% else %}
   <input type="checkbox" id="fri" name="fri" value="fri">
+  {% endif %}
   <label for="fri">F </label>
 
+  {% if current_user.sat %}
+  <input type="checkbox" id="sat" name="sat" value="sat" checked>
+  {% else %}
   <input type="checkbox" id="sat" name="sat" value="sat">
+  {% endif %}
   <label for="sat">S </label>
 
+  {% if current_user.sun %}
+  <input type="checkbox" id="sun" name="sun" value="sun" checked>
+  {% else %}
   <input type="checkbox" id="sun" name="sun" value="sun">
+  {% endif %}
   <label for="sun">S </label>
+  
   </fieldset>
 
   </form>
