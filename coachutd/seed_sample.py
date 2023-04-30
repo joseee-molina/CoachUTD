@@ -38,16 +38,23 @@ def seed(session):
             id=1,
             author=1,
             body="test post",
+            mon=True,
+            wed=True,
+            fri=True,
         ),
         Post(
             id=2,
             author=2,
             body="test post 2",
+            mon=True,
+            tue=True,
         ),
         Post(
             id=3,
             author=3,
             body="test post 3",
+            tue=True,
+            thu=True,
         ),
     ]
 

@@ -67,3 +67,25 @@ button:active {
   box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
   transform: translateY(0);
 }
+.empty{
+    border: 1px solid #e6e6e6;
+    background-color:#e6e6e6 ;
+    color: #b3b3b3 ;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    padding: 0.25rem;
+    display: inline-block;
+    text-align: center;
+}
+.avail{
+    border: 1px solid #aff4c6;
+    background-color: #aff4c6;
+     color: #14ae5c;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    padding: 0.25rem;
+    display: inline-block;
+    text-align: center;
+}

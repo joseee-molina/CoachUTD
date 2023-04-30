@@ -28,13 +28,21 @@
     <p>
       <svg class="like-button" fill="none" width="1em" height="1em" preserveAspectRatio="xMidYMax slice"
         viewBox="0 0 100 100">
-        <path d="M 50,10 90,90 10,90 z" fill="{{ 'green' if post.liked else 'black' }}"
-          stroke="{{ 'green' if post.liked else 'black' }}" stroke-width="20" stroke-linejoin="round"
+        <path d="M 50,10 90,90 10,90 z" fill="{{ '#14ae5c' if post.liked else '#b3b3b3' }}"
+          stroke="{{ '#14ae5c' if post.liked else '#b3b3b3' }}" stroke-width="20" stroke-linejoin="round"
           stroke-linecap="round" />
         Like
       </svg>
 
       {{ post.likes }}
+
+      <span class="{{ 'avail' if post.mon else 'empty' }}">M</span>
+      <span class="{{ 'avail' if post.tue else 'empty' }}">T</span>
+      <span class="{{ 'avail' if post.wed else 'empty' }}">W</span>
+      <span class="{{ 'avail' if post.thu else 'empty' }}">T</span>
+      <span class="{{ 'avail' if post.fri else 'empty' }}">F</span>
+      <span class="{{ 'avail' if post.sat else 'empty' }}">S</span>
+      <span class="{{ 'avail' if post.sun else 'empty' }}">S</span>
     </p>
   </div>
   {% endfor %}

@@ -33,6 +33,7 @@
   </fieldset>
 
   <br>
+  <fieldset>
   {% if current_user.tennis %}
   <input type="checkbox" id="tennis" name="tennis" checked>
   {% else %}
@@ -68,7 +69,8 @@
   <input type="checkbox" id="other_sport" name="other_sport">
   {% endif %}
   <label for="other_sport">Other </label>
-  
+  </fieldset>
+  <br>
   <fieldset required>
 
   {% if current_user.mon %}

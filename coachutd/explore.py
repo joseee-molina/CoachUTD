@@ -14,6 +14,13 @@ def feed():
         db.session.query(
             Post.created_at,
             Post.body,
+            Post.mon,
+            Post.tue,
+            Post.wed,
+            Post.thu,
+            Post.fri,
+            Post.sat,
+            Post.sun,
             User.username.label("author"),
             User.coach.label("coach"),
             User.trainee.label("trainee"),
