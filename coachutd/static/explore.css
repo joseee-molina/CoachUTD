@@ -11,16 +11,16 @@ p{
 }
 .body{
     width: 100%;
-    border: 1px solid black;
     padding: 0.5rem;
     padding-right: 0;
     margin-right: 10px;
     background-color: #f1f1f1;
     border: 1px solid #ffac3c;
 }
-html{
-    margin: 0.2rem;
+body{
+    margin-bottom: 0;
 }
+
 .liked{
     color: #ffac3c;
 }
@@ -30,6 +30,9 @@ a{
     bottom: 5%;
 }
 button {
+  position: fixed;
+  right: 10%;
+  bottom: 5%;
   margin: 1rem auto;
   background-clip: padding-box;
   background-color: #ffac3c;
@@ -43,7 +46,7 @@ button {
   font-size: 1rem;
   font-weight: 600;
   justify-content: center;
-  padding: 1rem;
+  padding: 1.5rem;
   text-decoration: none;
   transition: all 250ms;
   user-select: none;
