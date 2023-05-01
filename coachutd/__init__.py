@@ -20,12 +20,11 @@ def create_app():
 
         db.create_all()
 
-    # if in development mode, seed the tables with sample data
-    if app.debug:
-        from .seed_sample import seed
+    # seed the tables with sample data
+    from .seed_sample import seed
 
-        with app.app_context():
-            seed(db.session)
+    with app.app_context():
+        seed(db.session)
 
     # set up login with flask-login
     login_manager = LoginManager()
